@@ -1,12 +1,15 @@
-class User {
+abstract class User(var vehicle: Vehicle) {
 
-    var nombre = "José"
-    var apellido = "Perrier"
-    var edad = 19
-    var colorPiel = "moreno"
 
-    
+    var name = "José"
+    var lastName = "Perrier"
+    var age = 19
+    var colorSkin = "moreno"
 
+
+    fun useVehicle(){
+        vehicle.useVehicle()
+    }
 
 
 }
