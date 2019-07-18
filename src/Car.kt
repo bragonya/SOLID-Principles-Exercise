@@ -4,7 +4,10 @@ class Car() {
 
     init {
         //TODO dependency injection
-        tires = ArrayList()
+        tires = arrayListOf(Tire(true,TIRE_BRANDS.FIRESTONE),
+            Tire(true,TIRE_BRANDS.BRIDGESTONE),
+            Tire(true,TIRE_BRANDS.FIRESTONE),
+            Tire(true,TIRE_BRANDS.MICHELIN))
         engine = Engine(true,true)
     }
 
@@ -17,13 +20,10 @@ class Car() {
         return false
     }
 
-    fun addTire(tire: Tire) = tires.add(tire)
-
     //TODO It's strange that the car can repair by itself, Do we need another entity?
     fun fixCar(wallet: Wallet):Payment {
         // TODO Single responsibility
-        if(wallet.money >= tires.filter { !it.getState() }.fold(0) { sum:Long, element -> sum + element.brand.reparationPrice }
-            || wallet.money >= engine.fixPrice()){
+        if(wallet.money >= tires.filter { !it.getState() }.fold(0) { sum:Long, element -> sum + element.brand.reparationPrice }+engine.fixPrice()){
             Payment(tires.filter { !it.getState() }.fold(0) { sum:Long, element -> sum + element.repairTire() } + engine.fixEngine(),true)
         }
         return Payment(0,false)
@@ -34,11 +34,11 @@ class Car() {
 
     class Payment(val newAmountOfMoney:Long,val carWasRepaired:Boolean){
         operator fun plus(number:Double):Double{
-            return this.newAmountOfMoney + number
+            return number + this.newAmountOfMoney
         }
 
         operator fun minus(number:Double):Double{
-            return this.newAmountOfMoney - number
+            return number - this.newAmountOfMoney
         }
 
     }
