@@ -1,3 +1,5 @@
+import fixeds.Mechanic
+
 const val DRIVE_PRICE = 1_000
 class TaxiDriver(
     //TODO encapsulation
@@ -9,7 +11,11 @@ class TaxiDriver(
 
 
     //TODO dependency injection
-    var car:Car = Car()
+    var car:Car = Car(arrayListOf(Tire(true,TIRE_BRANDS.FIRESTONE),
+            Tire(true,TIRE_BRANDS.BRIDGESTONE),
+            Tire(true,TIRE_BRANDS.FIRESTONE),
+            Tire(true,TIRE_BRANDS.MICHELIN)),
+            Engine(sparkState = true, pistonsState = true))
     var wallet:Wallet=Wallet()
 
     init {
@@ -19,7 +25,7 @@ class TaxiDriver(
 
     fun drive():Boolean{
         println("😎 $name is going to drive")
-        if(car.isCarWorking()){
+        if(Mechanic.isCarWorking(car.tires, car.engine)){
             car.startCar()
             //TODO Should UberDriver class charge his own drive?
             wallet.money += DRIVE_PRICE
@@ -27,7 +33,7 @@ class TaxiDriver(
             printDriverStatus()
             return true
         }else{
-            val payment= car.fixCar(wallet)
+            val payment= Mechanic.fixCar(car.tires, car.engine, wallet)
             if(payment.carWasRepaired) {
                 //TODO Should UberDriver class discount his own reparation?
                 wallet.money = payment - wallet.money
