@@ -6,6 +6,8 @@ After debuggin for several hours we cannot found some inconsistences in our prog
 
 
 ## Inconsistencies
+These are logs of our program and we see the following:
+
 1. Our conductor had money but never rapaired the car
 ![inconsistencie_1](/img/inconsistencie1.png?raw=true "Inconsistencie 1")
 
@@ -25,3 +27,12 @@ Once you have all the refactor of code done you need to verify that all code is 
 3. Assert that tires aren't working well after 3 uses (3 calls to drive method)
 4. Assert that driver can't perform a trip if the car is not working well.
 5. Assert that the car won't be repair if the money is not enough.
+
+## How it works?
+Create a branch and try to solve these problems. Try to be creative, you can do anything as you think necessary.
+
+You should to use at least:
+ * SOLID principles
+ 
+Optionally
+ * Dagger 2
