@@ -4,12 +4,15 @@ class Engine (var sparkState:Boolean, var pistonsState:Boolean){
 
 
     fun useEngine() {
-        sparkState = randomNumber() >2
-        pistonsState = randomNumber() >4
+        sparkState = randomNumber(0,10) >2
+        pistonsState = randomNumber(0,10) >4
     }
 
-    fun randomNumber() = Math.random()%10
+    //TODO this method is repeated in Wallet class
+    fun randomNumber(min:Int,max:Int) = min + Math.random()%max
 
-    fun fixEngine() = 13_000L.also { pistonsState = true; sparkState = true }
+    fun fixEngine() = if(!isEngineWorking()) 13_000L.also { pistonsState = true; sparkState = true } else 0L
+
+    fun fixPrice() = 13_000L
 
 }

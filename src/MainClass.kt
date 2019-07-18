@@ -1,4 +1,5 @@
 
 fun main(args : Array<String>) {
-        println("Hello, world!")
+        val taxiDriver = TaxiDriver("José","Milla",15,"white")
+        taxiDriver.drive()
 }

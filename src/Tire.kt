@@ -5,6 +5,8 @@ class Tire(private var state:Boolean, var brand:TIRE_BRANDS){
     init {
         life = 0
     }
+
+
     fun repairTire():Long =
         when(brand){
             TIRE_BRANDS.FIRESTONE -> TIRE_BRANDS.FIRESTONE.reparationPrice
