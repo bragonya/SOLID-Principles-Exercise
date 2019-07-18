@@ -1,7 +1,14 @@
 # SOLID Exercises
 After debuggin for several hours we cannot found some inconsistences in our program, you as a developer needs to identify those problems. You need to create unit test of our methods to identify the problems, but you cannot yet 'cause the previous developer don't follow any pattern and it's difficult to create test on it.
 
-## Classes diagram
+## What is this program about?
+
+
+## Previous developer documentation
+### Flow of the program
+![Flow of the program](/img/FlowProgram.jpg?raw=true "Flow of the program")
+
+### Classes diagram
 ![Classes diagram](/img/UMLSOLIDExample.jpg?raw=true "Classes diagram")
 
 
