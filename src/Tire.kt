@@ -1,10 +1,6 @@
 class Tire(private var state:Boolean, var brand:TIRE_BRANDS){
-    private var life:Int
+    private var life:Int = 0
     private val MAX_USAGE = 3
-
-    init {
-        life = 0
-    }
 
 
     fun repairTire():Long =
