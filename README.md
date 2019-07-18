@@ -8,6 +8,9 @@ This is a little program which the principal idea is perform taxi trips to earn 
 * *TIRE_BRANDS* is an enum which contains the reparation price depends of the brand of the tire.
 * When the car is working well? When all tires status are true and engine status is true.
 
+
+**NOTE:** We as product owner with not enough programming knowledge, have suspicions that lot of problems occcur in *Car* class in *fixCar* method.
+
 ## Previous developer documentation
 ### Flow of the program
 ![Flow of the program](/img/FlowProgram.png?raw=true "Flow of the program")
