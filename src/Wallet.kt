@@ -1,8 +1,19 @@
-// TODO Likely I need to think on encapsulation, because money value can be changed by another external entity
-class Wallet{
-    var money:Double
+class Wallet(private var money:Double){
 
-    init {
-        money = Util.randomNumber(70_000,100_000)
+    fun addMoney(value:Int){
+        money+= value
     }
+
+    fun sependMoney(value:Double):Boolean{
+        if(!hasMoney(value.toLong())) return false
+        money -= value
+        return true
+    }
+
+    fun hasMoney(value: Long):Boolean{
+        return (money>value)
+    }
+
+    fun balance():Double = money
+
 }

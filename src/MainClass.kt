@@ -6,10 +6,29 @@ fun main(args : Array<String>) {
 
 fun testDriver(name:String,lastName:String,age:Int,colorSkin:String, iterations:Int)
 {
-        val taxiDriver = TaxiDriver(name,lastName,age,colorSkin)
+        val taxiDriver = TaxiDriver(name,lastName,age,colorSkin, Wallet(2000.toDouble()))
         for (x in 0 until iterations){
                 println("--------------------------------------------------👣 ITERATION ${x+1}-------------------------------------------------------------")
-                taxiDriver.drive()
+                if(x == 18 )
+                        taxiDriver.drive(getMockCarFail())
+                else
+                        taxiDriver.drive(getMockCar())
         }
-        taxiDriver.drive()
+        taxiDriver.drive(getMockCar())
+}
+
+fun getMockCar():Car{
+        return Car(arrayListOf(Tire(true,TIRE_BRANDS.FIRESTONE),
+                Tire(true,TIRE_BRANDS.BRIDGESTONE),
+                Tire(true,TIRE_BRANDS.FIRESTONE),
+                Tire(true,TIRE_BRANDS.MICHELIN)),
+                Engine(sparkState = true, pistonsState = true))
+}
+
+fun getMockCarFail():Car{
+        return Car(arrayListOf(Tire(false,TIRE_BRANDS.FIRESTONE),
+                Tire(true,TIRE_BRANDS.BRIDGESTONE),
+                Tire(true,TIRE_BRANDS.FIRESTONE),
+                Tire(true,TIRE_BRANDS.MICHELIN)),
+                Engine(sparkState = false, pistonsState = true))
 }

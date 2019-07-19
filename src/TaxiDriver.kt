@@ -2,43 +2,38 @@ import fixeds.Mechanic
 
 const val DRIVE_PRICE = 1_000
 class TaxiDriver(
-    //TODO encapsulation
-    var name:String,
-    var lastName:String,
-    var age:Int,
-    var colorSkin:String
+    private var name:String,
+    private var lastName:String,
+    private var age:Int,
+    private var colorSkin:String,
+    private var wallet: Wallet
 ) {
 
 
-    //TODO dependency injection
-    var car:Car = Car(arrayListOf(Tire(true,TIRE_BRANDS.FIRESTONE),
-            Tire(true,TIRE_BRANDS.BRIDGESTONE),
-            Tire(true,TIRE_BRANDS.FIRESTONE),
-            Tire(true,TIRE_BRANDS.MICHELIN)),
-            Engine(sparkState = true, pistonsState = true))
-    var wallet:Wallet=Wallet()
+    fun getName():String = name
+    fun getLastName():String = lastName
+    fun getAge():Int = age
+    fun getColorSkin():String = colorSkin
 
     init {
-        println("✍️ new Taxi Driver was registered as $name with ${wallet.money} of cash")
+        println("✍️ new Taxi Driver was registered as $name with ${wallet.balance()} of cash")
     }
 
 
-    fun drive():Boolean{
+    fun drive(car: Car):Boolean{
         println("😎 $name is going to drive")
         if(Mechanic.isCarWorking(car.tires, car.engine)){
             car.startCar()
-            //TODO Should UberDriver class charge his own drive?
-            wallet.money += DRIVE_PRICE
+            wallet.addMoney(DRIVE_PRICE)
             println("🥳 $name won $DRIVE_PRICE")
             printDriverStatus()
             return true
         }else{
             val payment= Mechanic.fixCar(car.tires, car.engine, wallet)
             if(payment.carWasRepaired) {
-                //TODO Should UberDriver class discount his own reparation?
-                wallet.money = payment - wallet.money
-                println("🥳 $name repaired his car")
-                drive()
+                wallet.sependMoney(payment.getPaymentValue().toDouble())
+                println("🥳 $name repaired his car and your new balance is ${wallet.balance()} ")
+                drive(car)
                 return true
             }
             println("😔 $name can't perform the trip")
@@ -48,6 +43,6 @@ class TaxiDriver(
     }
 
     fun printDriverStatus(){
-        println("name: $name lastName: $lastName age: $age colorSkin: $colorSkin money: ${wallet.money}")
+        println("name: $name lastName: $lastName age: $age colorSkin: $colorSkin money: ${wallet.balance()}")
     }
 }

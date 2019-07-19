@@ -1,6 +1,5 @@
 package fixeds
 
-import Car
 import Engine
 import Tire
 import Wallet
@@ -8,9 +7,13 @@ import Wallet
 object Mechanic {
 
     fun fixCar(tires:ArrayList<Tire>, engine: Engine, wallet: Wallet): Payment {
-        if(wallet.money >= totalFixTires(tires) + engine.fixPrice()){
-            Payment(totalFixedTires(tires) + engine.fixEngine(), true)
+        if(wallet.hasMoney(totalFixTires(tires) + engine.fixPrice())){
+            println("Has money, I am going to repair")
+            return Payment(totalFixedTires(tires) + engine.fixEngine(), true)
         }
+
+        println("You do not have enough balance , I am not going to repair")
+
         return Payment(0, false)
     }
 

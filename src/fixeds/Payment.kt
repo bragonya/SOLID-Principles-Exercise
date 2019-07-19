@@ -9,4 +9,6 @@ class Payment(private val newAmountOfMoney:Long, val carWasRepaired:Boolean){
         return number - this.newAmountOfMoney
     }
 
+    fun getPaymentValue():Long = newAmountOfMoney
+
 }
