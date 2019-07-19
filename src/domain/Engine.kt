@@ -1,11 +1,13 @@
+package domain
+
 class Engine (var sparkState:Boolean, var pistonsState:Boolean){
 
     fun isEngineWorking() = sparkState && pistonsState
 
 
     fun useEngine() {
-        sparkState = Util.randomNumber(0,10) >2
-        pistonsState = Util.randomNumber(0,10) >4
+        sparkState = Util.randomNumber(0, 10) >2
+        pistonsState = Util.randomNumber(0, 10) >4
     }
 
 

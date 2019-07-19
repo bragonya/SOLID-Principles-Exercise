@@ -1,4 +1,4 @@
-package fixeds
+package domain.fixeds
 
 class Payment(private val newAmountOfMoney:Long, val carWasRepaired:Boolean){
     operator fun plus(number:Double):Double{

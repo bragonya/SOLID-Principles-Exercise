@@ -1,3 +1,5 @@
+package domain
+
 class Wallet(private var money:Double){
 
     fun addMoney(value:Int){

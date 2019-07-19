@@ -1,8 +1,8 @@
-package fixeds
+package domain.fixeds
 
-import Engine
-import Tire
-import Wallet
+import domain.Engine
+import domain.Tire
+import domain.Wallet
 
 object Mechanic {
 

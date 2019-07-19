@@ -1,15 +1,25 @@
-import fixeds.Mechanic
+package domain
+
+import dagger.internal.codegen.DaggerComponentProcessor_ProcessorComponent
+import domain.di.ComponentTaxiDrive
+import domain.fixeds.Mechanic
+import javax.inject.Inject
 
 const val DRIVE_PRICE = 1_000
 class TaxiDriver(
     private var name:String,
     private var lastName:String,
     private var age:Int,
-    private var colorSkin:String,
-    private var wallet: Wallet
+    private var colorSkin:String
 ) {
 
+    @Inject
+    private lateinit var wallet: Wallet
 
+    @Inject
+    private lateinit var car:Car
+
+    lateinit var componentTaxiDriver: ComponentTaxiDrive
     fun getName():String = name
     fun getLastName():String = lastName
     fun getAge():Int = age
@@ -20,7 +30,7 @@ class TaxiDriver(
     }
 
 
-    fun drive(car: Car):Boolean{
+    fun drive():Boolean{
         println("😎 $name is going to drive")
         if(Mechanic.isCarWorking(car.tires, car.engine)){
             car.startCar()
@@ -33,7 +43,7 @@ class TaxiDriver(
             if(payment.carWasRepaired) {
                 wallet.sependMoney(payment.getPaymentValue().toDouble())
                 println("🥳 $name repaired his car and your new balance is ${wallet.balance()} ")
-                drive(car)
+                drive()
                 return true
             }
             println("😔 $name can't perform the trip")

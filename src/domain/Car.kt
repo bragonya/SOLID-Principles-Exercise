@@ -1,6 +1,8 @@
-import fixeds.Mechanic
+package domain
 
-class Car(val tires:ArrayList<Tire>, val engine:Engine ) {
+import domain.fixeds.Mechanic
+
+class Car(val tires:ArrayList<Tire>, val engine: Engine) {
 
 
     fun startCar():Boolean{

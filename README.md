@@ -2,14 +2,14 @@
 After debuggin for several hours we cannot found some inconsistences in our program, you as a developer needs to identify those problems. You need to create unit test of our methods to identify the problems, but you cannot yet 'cause the previous developer don't follow any pattern and it's difficult to create test on it.
 
 ## What is this program about?
-This is a little program which the principal idea is perform taxi trips to earn money, but exists some rules to perform a trip all parts of the car (*Tires* and *Engine* only) must to work well if not the case the taxi driver has to pay reparation of each part of the car, if the money is not egouh then the taxi driver can't perform the trip.
+This is a little program which the principal idea is perform taxi trips to earn money, but exists some rules to perform a trip all parts of the car (*Tires* and *domain.Engine* only) must to work well if not the case the taxi driver has to pay reparation of each part of the car, if the money is not egouh then the taxi driver can't perform the trip.
 
-* *Wallet* is the entity which manage the money of the driver
-* *TIRE_BRANDS* is an enum which contains the reparation price depends of the brand of the tire.
+* *domain.Wallet* is the entity which manage the money of the driver
+* *domain.TIRE_BRANDS* is an enum which contains the reparation price depends of the brand of the tire.
 * When the car is working well? When all tires status are true and engine status is true.
 
 
-**NOTE:** We as product owner with not enough programming knowledge, have suspicions that lot of problems occcur in *Car* class in *fixCar* method.
+**NOTE:** We as product owner with not enough programming knowledge, have suspicions that lot of problems occcur in *domain.Car* class in *fixCar* method.
 
 ## Previous developer documentation
 ### Flow of the program
